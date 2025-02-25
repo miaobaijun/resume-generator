@@ -10,3 +10,5 @@
 2.安装依赖：                                                                                                                        pip install -r requirements.txt  
                                                                                                                                       # resume-generator
 >>>>>>> 056f018f89079d562cfcf456073e48518bd00144
+## 📄 生成效果  
+![示例简历](docs/demo.png)  
