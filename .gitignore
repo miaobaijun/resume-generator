@@ -1,0 +1,13 @@
+﻿# 编译器/环境临时文件
+__pycache__/
+*.pyc
+
+# 构建产物
+dist/
+build/
+*.egg-info/
+my1ai.egg-info/  # 明确忽略此目录
+
+# IDE 文件
+.vscode/
+.idea/
