@@ -23,3 +23,8 @@ jobs:
         pip install pytest pytest-cov  # 添加明确安装
         pytest tests/ --cov=src --cov-report html:docs/coverage  # 增加 tests/ 路径
 
+    - name: 上传覆盖率报告
+      uses: actions/upload-artifact@v4
+      with:
+         name: coverage-report  # 最终生成的 ZIP 包名称
+         path: docs/coverage    # 要上传的目录路径
