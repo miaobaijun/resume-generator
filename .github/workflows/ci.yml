@@ -9,15 +9,16 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Python
+    - name: 安装 Python
       uses: actions/setup-python@v5
       with:
         python-version: "3.10"
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
+    - name: 安装项目依赖
+       run: pip install -r requirements.txt
 
-    - name: Run Tests and Coverage
-      run: |  # ▼▼ 注意这里的缩进必须有 8 个空格 ▼▼
-          pip install pytest-cov
-          pytest --cov=src --cov-report html:docs/coverage
+    # ▼▼▼ 新增的测试覆盖率步骤（核心）▼▼▼
+    - name: 运行测试并生成覆盖率
+      run: |
+        pip install pytest-cov   # 这是第10个空格缩进
+        pytest --cov=src --cov-report  html:docs/coverage  # 同样缩进
