@@ -16,3 +16,9 @@ build/
 
 # 本地环境文件
 .env
+
+# Python 缓存文件
+**/__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
