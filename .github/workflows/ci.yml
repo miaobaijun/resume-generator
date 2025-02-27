@@ -17,8 +17,9 @@ jobs:
     - name: 安装项目依赖
        run: pip install -r requirements.txt
 
-    # ▼▼▼ 新增的测试覆盖率步骤（核心）▼▼▼
-    - name: 运行测试并生成覆盖率
+      # ▼▼▼ 新增的测试覆盖率步骤（核心）▼▼▼
+    - name: 运行测试和覆盖率
       run: |
-        pip install pytest-cov   # 这是第10个空格缩进
-        pytest --cov=src --cov-report  html:docs/coverage  # 同样缩进
+        pip install pytest pytest-cov  # 添加明确安装
+        pytest tests/ --cov=src --cov-report html:docs/coverage  # 增加 tests/ 路径
+
