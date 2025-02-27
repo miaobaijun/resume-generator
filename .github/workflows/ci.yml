@@ -17,6 +17,7 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
-    # ▼▼▼ 新增的测试步骤 ▼▼▼（关键步骤）▼▼▼
-    - name: Run Tests
-      run: pytest tests/
+    - name: Run Tests and Coverage
+      run: |  # ▼▼ 注意这里的缩进必须有 8 个空格 ▼▼
+          pip install pytest-cov
+          pytest --cov=src --cov-report html:docs/coverage
