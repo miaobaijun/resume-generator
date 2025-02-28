@@ -32,3 +32,7 @@ jobs:
         with:
           name: coverage-report
           path: docs/coverage
+      - name: Upload to Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+         github-token: ${{ secrets.GITHUB_TOKEN }}
