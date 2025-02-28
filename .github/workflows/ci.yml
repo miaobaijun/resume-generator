@@ -24,7 +24,7 @@ jobs:
       # 步骤4：运行测试 + 生成报告
       - name: 执行测试和覆盖率检查
         run: |
-          pytest tests/ --cov=src --cov-report=html:docs/coverage
+          pytest tests/ --cov=src --cov-report=html:docs/coverage/html  # 增加子目录隔离
 
       # 步骤5：上传报告供下载
       - name: 上传覆盖率报告
