@@ -2,6 +2,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/miaobaijun/resume-generator?style=flat-square)](https://github.com/miaobaijun/resume-generator)
 [![Coverage Status](https://coveralls.io/repos/github/miaobaijun/resume-generator/badge.svg?branch=main)](https://coveralls.io/github/miaobaijun/resume-generator)
 
+
 🚀 **一键将 JSON 数据转换为专业 DOCX 简历 | 基于 Python 开发**  
 
 ![示例截图](docs/screenshot.png)  
