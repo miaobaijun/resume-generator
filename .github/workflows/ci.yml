@@ -1,11 +1,11 @@
-name: Build and Test
+name: CI Pipeline
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 检出代码仓库
+      - name: 检出代码
         uses: actions/checkout@v4
 
       - name: 安装Python 3.10
@@ -13,23 +13,19 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: 安装测试工具
-        run: pip install pytest pytest-cov coverage
+      - name: 安装依赖
+        run: pip install pytest pytest-cov
 
-      - name: 执行测试和覆盖率检查
-        run: |
-          pytest tests/ --cov=src --cov-report=term --cov-report=html:docs/coverage/html --cov-report=xml:docs/coverage/coverage.xml
-          # 生成 XML 和 HTML 双格式报告
+      - name: 执行测试并生成覆盖率报告
+        run: |  # 注意：以下内容有缩进！
+          pytest tests/ --cov=src --cov-report=term --cov-report=xml:docs/coverage/coverage.xml
+          mkdir -p docs/coverage
+          [ -f coverage.xml ] && mv coverage.xml docs/coverage/  # 处理可能的路径差异
 
-      - name: 上传HTML报告
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-html
-          path: docs/coverage/html
-
-      - name: 上传到Coveralls (需配置Token)
+      - name: 上传到Coveralls
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           coveralls-token: ${{ secrets.COVERALLS_SECRET }}
-          path-to-lcov: docs/coverage/coverage.xml  # 显式指定 XML 文件路径
+          path-to-lcov: docs/coverage/coverage.xml
+
