@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿# Python 临时文件
 **/__pycache__/
 *.py[cod]
@@ -22,3 +23,11 @@ build/
 *.pyc
 *.pyo
 .pytest_cache/
+=======
+# Python  
+__pycache__/  
+*.pyc  
+
+# 生成的临时文件  
+output/*.docx 
+>>>>>>> f46920c0eedda075868c90a311f49cc1efec7493
