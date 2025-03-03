@@ -31,3 +31,10 @@ __pycache__/
 # 生成的临时文件  
 output/*.docx 
 >>>>>>> f46920c0eedda075868c90a311f49cc1efec7493
+# 通用 Python 开发忽略规则
+*.pyc
+__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
