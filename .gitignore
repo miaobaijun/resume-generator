@@ -38,3 +38,18 @@ __pycache__/
 .coverage
 htmlcov/
 .venv/
+# == Python开发环境 ==
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# == IDE配置 ==
+.idea/
+.vscode/
+.DS_Store
+
+# == 虚拟环境和密钥 ==
+.venv/
+venv/
+env/
+.env
