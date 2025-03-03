@@ -1,30 +1,35 @@
-name: CI
+name: Build and Test
 
-on: [push]
+on: [push]  # 每次提交代码自动运行
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # GitHub提供的虚拟机环境
 
     steps:
-    - uses: actions/checkout@v4
+      # 步骤1：获取代码
+      - name: 检出代码仓库
+        uses: actions/checkout@v4
 
-    - name: 安装 Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.10"
+      # 步骤2：安装Python
+      - name: 安装Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
 
-    - name: 安装项目依赖
-       run: pip install -r requirements.txt
+      # 步骤3：安装依赖库
+      - name: 安装测试工具
+        run: pip install pytest pytest-cov
 
-      # ▼▼▼ 新增的测试覆盖率步骤（核心）▼▼▼
-    - name: 运行测试和覆盖率
-      run: |
-        pip install pytest pytest-cov  # 添加明确安装
-        pytest tests/ --cov=src --cov-report html:docs/coverage  # 增加 tests/ 路径
+      # 步骤4：运行测试 + 生成报告
+      - name: 执行测试和覆盖率检查
+        run: |
+          pytest tests/ --cov=src --cov-report=html:docs/coverage/html  # 增加子目录隔离
 
-    - name: 上传覆盖率报告
-      uses: actions/upload-artifact@v4
-      with:
-         name: coverage-report  # 最终生成的 ZIP 包名称
-         path: docs/coverage    # 要上传的目录路径
+      # 步骤5：上传报告供下载
+      - name: 上传覆盖率报告
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: docs/coverage
+
